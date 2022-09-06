@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Book = () => {
   return (
     <>
+      <Link to="/admin">Admin</Link>
       <h2>Book Appointment</h2>
-      <Link to="/admin">Click here to go to Admin Page</Link>
     </>
   );
 };
