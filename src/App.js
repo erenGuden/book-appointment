@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Admin from './Components/Admin.js';
+import Book from './Components/Book';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { render } from "react-dom";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/book" element={<Book />} />
+      </Routes>
+    </BrowserRouter>,
+    document.getElementById("root")
   );
-}
+};
+
+
 
 export default App;
