@@ -42,7 +42,7 @@ const Book = () => {
               <label for="date">Date</label>
               <input type="date" class="form-control" id="date" />
             </div>
-            <label>Time:</label>
+            <label>Time</label>
             <select class="form-select">
               {timeSlots.map((option, index) => (
                 <option key={index} value={option}>
