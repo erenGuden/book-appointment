@@ -1,7 +1,6 @@
 label {
     color: black;
     font-weight: bold;
-    
 }
 
 input {
@@ -9,6 +8,7 @@ input {
     margin-bottom: 20px;  
     font-style: italic;
 }
+
 select {
     color: #8e8e8e;
     font-style: italic;

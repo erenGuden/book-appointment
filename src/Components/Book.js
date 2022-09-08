@@ -21,7 +21,7 @@ const Book = () => {
           <div class="col-md-4">
             <h2>Book Appointment</h2>
             <div className="form-group">
-              <label for="email">Email:</label>
+              <label for="email">Email</label>
               <input
                 type="email"
                 class="form-control"
@@ -30,7 +30,7 @@ const Book = () => {
               />
             </div>
             <div className="form-group">
-              <label for="name">Full Name:</label>
+              <label for="name">Full Name</label>
               <input
                 type="name"
                 class="form-control"
@@ -39,7 +39,7 @@ const Book = () => {
               />
             </div>
             <div className="form-group">
-              <label for="date">Date:</label>
+              <label for="date">Date</label>
               <input type="date" class="form-control" id="date" />
             </div>
             <label>Time:</label>
