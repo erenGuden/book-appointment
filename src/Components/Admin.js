@@ -6,6 +6,7 @@ const Admin = () => {
     <>
       <Link to="/book">Book</Link>
       <h2>Admin Page</h2>
+      <h2>Reservations</h2>
     </>
   );
 };
