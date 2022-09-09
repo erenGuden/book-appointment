@@ -7,6 +7,7 @@ const Book = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
+  const [option, setOption] = useState("");
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -20,14 +21,13 @@ const Book = () => {
     setDate(event.target.value);
   };
 
-  const [option, setOption] = useState("");
   const handleOption = (event) => {
     setOption(event.target.value);
   };
 
   const onSave = () => {
-    const obj = { name, email, date, option };
-    console.log(obj);
+    const bookingData = { name, email, date, option };
+    console.log(bookingData)
   };
 
   const timeSlots = [
