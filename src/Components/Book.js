@@ -1,13 +1,16 @@
 import "./styles.css";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
-const Book = () => {
+ const Book = () => {
+  const { addBooking } = useContext(GlobalContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [option, setOption] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -25,9 +28,22 @@ const Book = () => {
     setOption(event.target.value);
   };
 
-  const onSave = () => {
-    const bookingData = { name, email, date, option };
-    console.log(bookingData)
+  const onSave = (e) => {
+    e.preventDefault();
+    setName("");
+    setDate("");
+    setEmail("");
+    setOption("");
+
+    const newBooking = {
+      name,
+      email,
+      date,
+      option,
+    };
+
+    addBooking(newBooking);
+    setSuccess(true);
   };
 
   const timeSlots = [
@@ -46,6 +62,11 @@ const Book = () => {
       <form>
         <div className="row justify-content-center">
           <div className="col-md-4">
+            {success && (
+              <div className="alert alert-success" role="alert">
+                You completed your reservation successfully.
+              </div>
+            )}
             <h2>Book Appointment</h2>
             <div className="form-group">
               <label>Email</label>
