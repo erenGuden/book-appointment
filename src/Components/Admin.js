@@ -10,7 +10,6 @@ const Admin = () => {
     if (a.date < b.date) return -1;
     return 0;
   });
-  console.log(sortedData);
 
   return (
     <>
@@ -24,10 +23,9 @@ const Admin = () => {
         <h2>Admin Page</h2>
         <h3>Reservations</h3>
         {sortedData.map((data, index) => (
-          <div style={{ padding: "5px" }}>
+          <div key={index} style={{ padding: "5px" }}>
             <div
               className="card border-success mb-3"
-              key={index}
               style={{ padding: "5px" }}
             >
               <div

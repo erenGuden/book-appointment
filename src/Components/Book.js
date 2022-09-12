@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
- const Book = () => {
+const Book = () => {
   const { addBooking } = useContext(GlobalContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -118,6 +118,7 @@ import { GlobalContext } from "../context/GlobalState";
               onClick={onSave}
               type="button"
               className="btn btn-outline-primary"
+              disabled={!email || !name || !date || !option}
             >
               Book
               <svg
