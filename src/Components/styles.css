@@ -1,15 +1,21 @@
 label {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 input {
-    color: #8e8e8e;
-    margin-bottom: 20px;  
-    font-style: italic;
+  color: #8e8e8e;
+  margin-bottom: 20px;
+  font-style: italic;
 }
 
 select {
-    color: #8e8e8e;
-    font-style: italic;
-}   
+  color: #8e8e8e;
+  font-style: italic;
+}
+
+div {
+  color: #0e0e0e;
+  margin-bottom: 20px;
+  font-style: normal;
+}
