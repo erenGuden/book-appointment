@@ -5,22 +5,44 @@ import { GlobalContext } from "../context/GlobalState";
 
 const Admin = () => {
   const { bookingData } = useContext(GlobalContext);
+  const sortedData = bookingData.sort((a, b) => {
+    if (a.date > b.date) return 1;
+    if (a.date < b.date) return -1;
+    return 0;
+  });
+  console.log(sortedData);
 
   return (
     <>
       <Link type="button" className="btn btn-info" to="/book">
         Book
       </Link>
-      <h2>Admin Page</h2>
-      <h3>Reservations</h3>
-      {bookingData.map((data, index) => (
-        <div key={index}>
-          Fullname: {data.name} <br></br> Email: {data.email} <br></br> Date:{" "}
-          {data.date} <br></br> Time:
-          {data.option}
-          <hr></hr>
-        </div>
-      ))}
+      <div
+        className="mx-auto col-md-3"
+        style={{ textAlign: "center", padding: "10px" }}
+      >
+        <h2>Admin Page</h2>
+        <h3>Reservations</h3>
+        {sortedData.map((data, index) => (
+          <div style={{ padding: "5px" }}>
+            <div
+              className="card border-success mb-3"
+              key={index}
+              style={{ padding: "5px" }}
+            >
+              <div
+                className="card-header bg-transparent border-success"
+                style={{ fontWeight: "bold", padding: "5px" }}
+              >
+                Booking of {data.name}
+              </div>
+              Fullname: {data.name} <br></br> Email: {data.email} <br></br>{" "}
+              Date: {data.date} <br></br> Time:
+              {data.option}
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
