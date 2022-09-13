@@ -107,6 +107,7 @@ const Book = () => {
               <label>Date</label>
               <input
                 type="date"
+                min={new Date().toISOString().slice(0, 10)}
                 className="form-control"
                 id="date"
                 name="date"
