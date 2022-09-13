@@ -5,11 +5,17 @@ import { GlobalContext } from "../context/GlobalState";
 
 const Admin = () => {
   const { bookingData } = useContext(GlobalContext);
-  const sortedData = bookingData.sort((a, b) => {
-    if (a.date > b.date) return 1;
-    if (a.date < b.date) return -1;
-    return 0;
-  });
+  const sortedData = bookingData.sort((a, b) =>
+    a.date > b.date
+      ? 1
+      : a.date < b.date
+      ? -1
+      : 0 || a.option > b.option
+      ? 1
+      : a.option < b.option
+      ? -1
+      : 0
+  );
 
   return (
     <>

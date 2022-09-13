@@ -11,7 +11,7 @@ const Book = () => {
   const [date, setDate] = useState("");
   const [option, setOption] = useState("");
   const [success, setSuccess] = useState(false);
-
+  
   const handleName = (event) => {
     setName(event.target.value);
   };
@@ -108,6 +108,7 @@ const Book = () => {
               className="form-select"
               value={option}
               onChange={handleOption}
+              disabled={!date}
             >
               {timeSlots.map((option, index) => (
                 <option key={index}>{option}</option>
