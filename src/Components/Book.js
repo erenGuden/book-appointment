@@ -4,13 +4,22 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
+const times = [
+  "09:00 - 09:30",
+  "09:30 - 10:00",
+  "10:00 - 10:30",
+  "10:30 - 11:00",
+  "11:00 - 11:30",
+];
+
 const Book = () => {
-  const { addBooking } = useContext(GlobalContext);
+  const { addBooking, bookingData } = useContext(GlobalContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [option, setOption] = useState("");
   const [success, setSuccess] = useState(false);
+  const [timeSlots, setTimeSlots] = useState(times);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -22,6 +31,16 @@ const Book = () => {
 
   const handleDate = (event) => {
     setDate(event.target.value);
+
+    const bookedTimes = bookingData
+      .filter(({ date }) => date === event.target.value)
+      .map(({ option }) => option);
+
+    const availableTimes = times.filter((data) => {
+      return !bookedTimes.includes(data);
+    });
+
+    setTimeSlots(availableTimes);
   };
 
   const handleOption = (event) => {
@@ -45,14 +64,6 @@ const Book = () => {
     addBooking(newBooking);
     setSuccess(true);
   };
-
-  const timeSlots = [
-    "09:00 - 09:30",
-    "09:30 - 10:00",
-    "10:00 - 10:30",
-    "10:30 - 11:00",
-    "11:00 - 11:30",
-  ];
 
   return (
     <>
@@ -96,6 +107,7 @@ const Book = () => {
               <label>Date</label>
               <input
                 type="date"
+                min={new Date().toISOString().slice(0, 10)}
                 className="form-control"
                 id="date"
                 name="date"
@@ -108,7 +120,9 @@ const Book = () => {
               className="form-select"
               value={option}
               onChange={handleOption}
+              disabled={!date}
             >
+              <option />
               {timeSlots.map((option, index) => (
                 <option key={index}>{option}</option>
               ))}
